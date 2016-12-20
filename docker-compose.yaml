@@ -1,7 +1,7 @@
 version: '2'
 services:
   web:
-    build: .
+    build: ./web-server
     command: node ./dist/src/index.js
     ports:
       - "127.0.0.1:9999:9999"
@@ -15,14 +15,16 @@ services:
       - front-tier
       - back-tier
 
-  #data:
-  #  extends:
-  #    file: data-server.yaml
-  ##    service: data
-  #  links:
-  #      - db
-  ##  networks:
-  #      - back-tier
+  data:
+    build: ./data-server
+    command: python main.py
+    volumes:
+        - ./vismooc-data-server:/src
+    depends_on:
+        - db
+    networks:
+        - back-tier
+
   redis:
     image: redis
     networks:

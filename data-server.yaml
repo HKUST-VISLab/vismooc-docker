@@ -1,6 +1,0 @@
-version: "2"
-data:
-    build: ./data-server
-    command: /bin/bash /src/data_server.sh
-    volumes:
-        - ./vismooc-data-server:/src
