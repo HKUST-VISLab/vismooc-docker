@@ -3,4 +3,4 @@ ADD ./vismooc-web-server /src
 WORKDIR /src
 RUN npm install && npm build
 EXPOSE 9999
-CMD ["npm", "start"]
+CMD ["/bin/bash"]
