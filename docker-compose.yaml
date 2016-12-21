@@ -1,5 +1,14 @@
 version: '2'
 services:
+  recover:
+    build: ./recover
+    command: mongorestore --host db /data
+    volumes:
+      - ./database/data_backup:/data
+    depends_on:
+      - db
+    networks:
+      - back-tier
   web:
     build: ./web-server
     command: node /src/dist/src/index.js /config/config.json
