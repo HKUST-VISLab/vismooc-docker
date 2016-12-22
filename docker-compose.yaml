@@ -23,7 +23,6 @@ services:
     networks:
       - front-tier
       - back-tier
-
   data:
     build: ./data-server
     command: python /src/main.py /config/config.json
@@ -34,19 +33,16 @@ services:
         - db
     networks:
         - back-tier
-
   redis:
     image: redis
     networks:
       - back-tier
-
   db:
     build: ./database
     volumes:
         - ./database/data:/data/db
     networks:
       - back-tier
-
 networks:
   front-tier:
     driver: bridge
