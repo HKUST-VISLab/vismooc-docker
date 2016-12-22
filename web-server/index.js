@@ -22,7 +22,7 @@ function main() {
          * Get port from environment and store in Express.
          */
         const app = server_1.default();
-        const port = process.env.PORT || "9999";
+        const port = init_1.CONFIG.port;
         const server = http_1.createServer(app.callback());
         /**
          * Listen on provided port, on all network interfaces.
