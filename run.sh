@@ -46,3 +46,6 @@ cd ..
 cd ./web-server
 npm install --production && npm install -g pm2
 sudo pm2 start index.js ../config.json 
+
+# run the python code at the first time to fetch data
+python3 ./data-server/main.py ./config.json &
