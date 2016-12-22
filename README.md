@@ -41,7 +41,7 @@ OS: Debian 8 (amd64)
 1. install nodejs@v6.9.1
 2. cd ./web-server
 3. npm install && npm install -g pm2
-4. pm2 start index.js
+4. pm2 start index.js ../config.json
 5. cd ..
 
 ### Fetch data after Installation
