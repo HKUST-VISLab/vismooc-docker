@@ -20,9 +20,6 @@ services:
     depends_on:
       - db
       - redis
-    networks:
-      - front-tier
-      - back-tier
   data:
     build: ./data-server
     command: python /src/main.py /config/config.json
@@ -31,20 +28,9 @@ services:
         - ./config:/config
     depends_on:
         - db
-    networks:
-        - back-tier
   redis:
     image: redis
-    networks:
-      - back-tier
   db:
-    build: ./database
+    image: mongo:3.4
     volumes:
         - ./database/data:/data/db
-    networks:
-      - back-tier
-networks:
-  front-tier:
-    driver: bridge
-  back-tier:
-    driver: bridge
