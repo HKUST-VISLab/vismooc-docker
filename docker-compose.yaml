@@ -1,21 +1,12 @@
 version: '2'
 services:
-  recover:
-    build: ./recover
-    command: mongorestore --host db /data
-    volumes:
-      - ./database/data_backup:/data
-    depends_on:
-      - db
-    networks:
-      - back-tier
   web:
     build: ./web-server
-    command: node /src/dist/src/index.js /config/config.json
+    command: node /dist/index.js /config/config.json
     ports:
       - "127.0.0.1:9999:9999"
     volumes:
-      - ./web-server/vismooc-web-server:/src
+      - ./web-server/dist:/dist
       - ./config:/config
     depends_on:
       - db
