@@ -2,11 +2,12 @@ version: '2'
 services:
   web:
     build: ./web-server
-    image: vismooc-web-server:0.12
+    image: vismooc-web-server:0.13
     ports:
       - "127.0.0.1:9999:9999"
     volumes:
       - ./web-server/dist:/dist
+      - /dist/node_modules
       - ./config:/config
     depends_on:
       - db
