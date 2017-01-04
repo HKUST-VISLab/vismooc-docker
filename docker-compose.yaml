@@ -2,7 +2,6 @@ version: '2'
 services:
   web:
     build: ./web-server
-    command: node /dist/index.js /config/config.json
     ports:
       - "127.0.0.1:9999:9999"
     volumes:
@@ -13,9 +12,9 @@ services:
       - redis
   data:
     build: ./data-server
-    command: python /src/main.py /config/config.json
+    command: python /dist/main.py /config/config.json
     volumes:
-        - ./data-server/vismooc-data-server:/src
+        - ./data-server/dist:/dist
         - ./config:/config
     depends_on:
         - db
@@ -24,4 +23,4 @@ services:
   db:
     image: mongo:3.4
     volumes:
-        - ./database/data:/data/db
+        - ./database/data:/data
