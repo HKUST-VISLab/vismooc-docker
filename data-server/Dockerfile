@@ -6,4 +6,4 @@ ADD ./dist/crontab /etc/cron.d/vismooc-cron
 RUN chmod 0644 /etc/cron.d/vismooc-cron
 WORKDIR /dist
 RUN pip install -r requirements.txt
-CMD ["cron", "&&", "python", "main.py", "../../config/config.json"]
+CMD cron && python main.py ../../config/config.json
