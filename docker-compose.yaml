@@ -12,7 +12,6 @@ services:
       - redis
   data:
     build: ./data-server
-    command: python /dist/main.py /config/config.json
     volumes:
         - ./data-server/dist:/dist
         - ./config:/config
