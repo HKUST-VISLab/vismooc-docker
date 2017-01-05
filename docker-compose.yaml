@@ -19,13 +19,18 @@ services:
         max-file: 10
   data:
     build: ./data-server
-    image: vismooc-data-server:0.12
+    image: vismooc-data-server:0.13.0
     volumes:
         - ./data-server/dist:/dist
         - /dist/vismooc-test-data
         - ./config:/config
     depends_on:
         - db
+    logging:
+      driver: json-file
+      options:
+        max-size: 1g
+        max-file: 10
   redis:
     image: redis
     logging:
