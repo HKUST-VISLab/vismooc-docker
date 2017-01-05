@@ -15,8 +15,8 @@ services:
     logging:
       driver: json-file
       options:
-        max-size: 1g
-        max-file: 10
+        max-size: "1g"
+        max-file: "10"
   data:
     build: ./data-server
     image: vismooc-data-server:0.13.0
@@ -29,8 +29,8 @@ services:
     logging:
       driver: json-file
       options:
-        max-size: 1g
-        max-file: 10
+        max-size: "1g"
+        max-file: "10"
   redis:
     image: redis
   db:
