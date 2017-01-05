@@ -1,20 +1,14 @@
-# Vicmooc@v0.1.0 
+# Vicmooc@v0.2.0 
 
-(based on [vismooc-data-server@v0.2.0](https://github.com/HKUST-VISLab/vismooc-data-server/releases/tag/v0.2.0) and [vismooc-web-server@v0.2.0](https://github.com/HKUST-VISLab/vismooc-web-server/releases/tag/v0.2.1)).
-
+(based on [vismooc-data-server@v0.3.0](https://github.com/HKUST-VISLab/vismooc-data-server/releases/tag/v0.3.0) and [vismooc-web-server@v0.3.0](https://github.com/HKUST-VISLab/vismooc-web-server/releases/tag/v0.3.0)).
 
 ## Requirement:
 
 ### OS
 OS: Debian 8 (amd64)
 
-
 ### Software
-- MongoDB@v3.2
-- Redis@v3.2
-- Python@v3.5
-- NodeJs@v6.9.1
-
+- Docker
 
 ### Hardware
 - CPU: Intel core i5-6500 @3.20GHz， 4 cores
@@ -23,26 +17,8 @@ OS: Debian 8 (amd64)
 
 ## Installation
 
-### MongoDB
-1. install MongoDB
-2. start the service
+### Docker
+1. install Docker and Docker-compose
 
-### Redis
-1. install Redis
-2. start the service
-
-### Data-server
-1. install python@v3.5
-2. cd ./data-server
-3. pip install -r requirement.txt
-4. add this command `"30 22 * * * python3 "${absPath}" ../config.json"` into crontab to run the script dailly.
-
-### Web-server
-1. install nodejs@v6.9.1
-2. cd ./web-server
-3. npm install && npm install -g pm2
-4. pm2 start index.js ../config.json
-5. cd ..
-
-### Fetch data after Installation
-1. python3 ./data-server/main.py ./config.json &
+### vismooc
+1. Build the images and run the container `sudo docker-compose up -d`
