@@ -2,7 +2,7 @@ version: '2'
 services:
   web:
     build: ./web-server
-    image: vismooc-web-server:0.13
+    image: vismooc-web-server:0.14
     ports:
       - "127.0.0.1:9999:9999"
     volumes:
@@ -19,7 +19,7 @@ services:
         max-file: 10
   data:
     build: ./data-server
-    image: vismooc-data-server:0.1
+    image: vismooc-data-server:0.11
     volumes:
         - ./data-server/dist:/dist
         - ./config:/config
