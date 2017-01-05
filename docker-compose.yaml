@@ -12,6 +12,11 @@ services:
     depends_on:
       - db
       - redis
+    logging:
+      driver: json-file
+      options:
+        max-size: 1g
+        max-file: 10
   data:
     build: ./data-server
     image: vismooc-data-server:0.1
@@ -20,9 +25,24 @@ services:
         - ./config:/config
     depends_on:
         - db
+    logging:
+      driver: json-file
+      options:
+        max-size: 1g
+        max-file: 10
   redis:
     image: redis
+    logging:
+      driver: json-file
+      options:
+        max-size: 1g
+        max-file: 10
   db:
     image: mongo:3.4
     volumes:
         - ./database/data:/data
+    logging:
+      driver: json-file
+      options:
+        max-size: 1g
+        max-file: 10
