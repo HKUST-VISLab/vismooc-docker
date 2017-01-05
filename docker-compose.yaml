@@ -2,7 +2,7 @@ version: '2'
 services:
   web:
     build: ./web-server
-    image: vismooc-web-server:0.14
+    image: vismooc-web-server:0.2.0
     ports:
       - "127.0.0.1:9999:9999"
     volumes:
@@ -22,14 +22,10 @@ services:
     image: vismooc-data-server:0.11
     volumes:
         - ./data-server/dist:/dist
+        - /dist/vismooc-test-data
         - ./config:/config
     depends_on:
         - db
-    logging:
-      driver: json-file
-      options:
-        max-size: 1g
-        max-file: 10
   redis:
     image: redis
     logging:
