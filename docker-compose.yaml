@@ -19,7 +19,7 @@ services:
         max-file: 10
   data:
     build: ./data-server
-    image: vismooc-data-server:0.11
+    image: vismooc-data-server:0.12
     volumes:
         - ./data-server/dist:/dist
         - /dist/vismooc-test-data
