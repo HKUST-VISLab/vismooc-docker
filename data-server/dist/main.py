@@ -7,6 +7,8 @@ from os import makedirs
 from os.path import exists, join
 from datetime import datetime, timezone, timedelta
 from threading import Timer
+import asyncio
+
 from mathematician.fetch_data import DownloadFileFromServer
 from mathematician.pipe import PipeLine
 from mathematician.Processor import ParseCourseStructFile, ParseEnrollmentFile,\
@@ -14,7 +16,6 @@ from mathematician.Processor import ParseCourseStructFile, ParseEnrollmentFile,\
 from mathematician import config
 from mathematician.config import DBConfig as DBC, FilenameConfig as FC
 from mathematician.DB import mongo_dbhelper
-
 
 def get_offline_files():
     """Fetch meta db files data from db"""
@@ -32,16 +33,21 @@ def get_offline_files():
     files = [item.get(DBC.FIELD_METADBFILES_FILEPATH) for item in items]
     return files + mongo_files
 
-
-today = datetime.today()
-tomorrow = today.replace(day=today.day + 1, hour=1,
-                            minute=0, second=0, microsecond=0)
-delta = tomorrow - today
-secs = delta.seconds + 1
+def seconds_to_tmr_1_am():
+    '''Get the time interval to tomorrow 1am in sencends
+    '''
+    now = datetime.now(timezone(timedelta(hours=8)))
+    tomorrow = now.replace(day=now.day + 1, hour=1, minute=0, second=0, microsecond=0)
+    delta = tomorrow - now
+    secs = delta.seconds + 1
+    return secs
 
 def app(first_time=False, offline=False):
     '''The main entry of our script
     '''
+    # create a new loop in this thread
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
     # Hong Kong Time
     now = datetime.now(timezone(timedelta(hours=8)))
     dir_name = str(now.year) + '-' + str(now.month) + '-' + str(now.day - 1)
@@ -53,21 +59,27 @@ def app(first_time=False, offline=False):
         file_names = get_offline_files()
     else:
         download = DownloadFileFromServer(dir_name)
-        file_names = download.get_files_to_be_processed(True)
-    pipeline = PipeLine()
-    pipeline.input_files(file_names).pipe(ParseCourseStructFile()).pipe(
-        ParseEnrollmentFile()).pipe(ParseLogFile()).pipe(ParseUserFile()).pipe(
-            ExtractRawData()).pipe(DumpToDB())
-    pipeline.excute()
+        file_names = download.get_files_to_be_processed()
+    if len(file_names):
+        pipeline = PipeLine()
+        pipeline.input_files(file_names).pipe(ParseCourseStructFile()).pipe(
+            ParseEnrollmentFile()).pipe(ParseLogFile()).pipe(ParseUserFile()).pipe(
+                ExtractRawData()).pipe(DumpToDB())
+        pipeline.excute()
     print('spend time:' + str(datetime.now() - start_time))
     if first_time:
-        timer = Timer(secs, app)
+        timer = Timer(seconds_to_tmr_1_am(), app)
     else:
         timer = Timer(60 * 60 * 24, app)
     timer.start()
 
-if __name__ == "__main__":
+def main():
+    '''Entry point
+    '''
     # init the config if config file is provided
     if len(sys.argv) >= 2:
         config.init_config(sys.argv[1])
     app(first_time=True)
+
+if __name__ == "__main__":
+    main()
