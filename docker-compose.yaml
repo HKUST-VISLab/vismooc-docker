@@ -4,7 +4,7 @@ services:
     build: ./web-server
     image: vismooc-web-server:0.3.0
     ports:
-      - "127.0.0.1:9999:9999"
+      - "0.0.0.0:9999:9999"
     volumes:
       - ./web-server/dist:/dist
       - /dist/node_modules
@@ -22,7 +22,7 @@ services:
     image: vismooc-data-server:0.3.2
     volumes:
         - ./data-server/dist:/dist
-        - /dist/vismooc-test-data
+        - /dist/vismooc-raw-data
         - ./config:/config
     depends_on:
         - db
