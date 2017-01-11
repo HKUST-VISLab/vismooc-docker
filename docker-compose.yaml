@@ -17,7 +17,7 @@ services:
         max-file: "10"
   data:
     build: ./data-server
-    image: vismooc-data-server:0.3.3
+    image: vismooc-data-server:0.3.5
     volumes:
         - ./data-server/dist:/dist
         - ./config:/config
