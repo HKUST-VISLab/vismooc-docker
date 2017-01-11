@@ -7,7 +7,7 @@ services:
       - "0.0.0.0:9999:9999"
     volumes:
       - ./web-server/dist:/dist
-      - /dist/node_modules
+      - ./web-server/dist/node_modules:/dist/node_modules
       - ./config:/config
     depends_on:
       - db
@@ -22,7 +22,7 @@ services:
     image: vismooc-data-server:0.3.3
     volumes:
         - ./data-server/dist:/dist
-        - /dist/vismooc-raw-data
+        - ./data-server/dist/vismooc-raw-data:/dist/vismooc-raw-data
         - ./config:/config
     depends_on:
         - db
