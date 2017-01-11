@@ -102,7 +102,7 @@ class MongoQuery {
     exec() {
         return __awaiter(this, arguments, void 0, function* () {
             this.query = this.query.lean();
-            let self = this.query;
+            const self = this.query;
             const model = self.model;
             const query = self.getQuery();
             const options = self._optionsForExec(model);
@@ -115,7 +115,7 @@ class MongoQuery {
             }
             const key = JSON.stringify(query) + JSON.stringify(options) + JSON.stringify(fields);
             try {
-                const result = yield redis.get(key);
+                const result = (yield redis.get(key));
                 let docs;
                 if (!result) {
                     docs = yield self.exec();

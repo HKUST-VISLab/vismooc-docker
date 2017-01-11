@@ -12,6 +12,7 @@ const mongoose = require("mongoose");
 const database_manager_1 = require("./database/database-manager");
 exports.CONFIG = {
     port: 9999,
+    subPath: "",
     mongo: {
         host: "localhost",
         name: "test-vismooc-newData",
