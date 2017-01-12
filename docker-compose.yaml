@@ -16,10 +16,9 @@ services:
         max-size: "1g"
         max-file: "10"
   data:
-    build: ./data-server
-    image: vismooc-data-server:0.3.5
+    image: hkustvislab/vismooc-data-server:dev
     volumes:
-        - ./data-server/dist:/dist
+        - ./vismooc-raw-data:/dist/vismooc-raw-data
         - ./config:/config
     depends_on:
         - db
