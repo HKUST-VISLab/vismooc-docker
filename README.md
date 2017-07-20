@@ -22,6 +22,5 @@ OS: Debian 8 (amd64)
 1. install Docker and Docker-compose
 
 ### vismooc
-1. Setting the `bind-address` of MySql to `172.17.0.1`.
-2. Setting the configuration under the folder `config`, then save the configuration as `config.json`.
-3. Build the images and run the container `sudo docker-compose up -d`
+1. Setting the configuration under the folder `config`, then save the configuration as `config.json`.
+2. Build the images and run the container `sudo docker-compose up -d`
