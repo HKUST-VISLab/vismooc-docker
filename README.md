@@ -1,7 +1,7 @@
-# Vicmooc@v0.4.9
+# Vicmooc@v0.4.10
 
 (based on [vismooc-data-server@v0.5.7](https://github.com/HKUST-VISLab/vismooc-data-server/releases/tag/v0.5.7) and 
-[vismooc-web-server@v0.7.2](https://github.com/HKUST-VISLab/vismooc-web-server/releases/tag/v0.7.2)).
+[vismooc-web-server@v0.7.3](https://github.com/HKUST-VISLab/vismooc-web-server/releases/tag/v0.7.3)).
 
 ## Requirement:
 

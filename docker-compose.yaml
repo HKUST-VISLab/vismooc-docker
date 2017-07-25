@@ -1,7 +1,7 @@
 version: '2'
 services:
   web:
-    image: hkustvislab/vismooc-web-server:v0.7.2
+    image: hkustvislab/vismooc-web-server:v0.7.3
     ports:
       - "0.0.0.0:9999:9999"
     volumes:
