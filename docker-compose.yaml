@@ -15,7 +15,7 @@ services:
         max-size: "1g"
         max-file: "10"
   web:
-    image: hkustvislab/vismooc-web-server:v0.12.1
+    image: hkustvislab/vismooc-web-server:v0.12.2
     volumes:
       - ./config:/config
     depends_on:
