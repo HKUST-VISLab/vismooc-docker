@@ -1,7 +1,7 @@
 version: '2'
 services:
   front:
-    image: hkustvislab/vismooc-front-end:v0.5.0
+    image: hkustvislab/vismooc-front-end:v0.6.0
     ports:
       - "0.0.0.0:8080:80"
     depends_on:
@@ -27,7 +27,7 @@ services:
         max-size: "1g"
         max-file: "10"
   data:
-    image: hkustvislab/vismooc-data-server:v0.8.0
+    image: hkustvislab/vismooc-data-server:v0.9.0
     volumes:
         - ./vismooc-raw-data:/dist/vismooc-raw-data
         - ./config:/config
