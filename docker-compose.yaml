@@ -1,7 +1,7 @@
 version: '2'
 services:
   front:
-    image: hkustvislab/vismooc-front-end:v0.6.0
+    image: hkustvislab/vismooc-front-end:v0.6.1
     ports:
       - "0.0.0.0:8080:80"
     depends_on:
