@@ -2,7 +2,7 @@
 
 (based on [vismooc-data-server@v0.9.3](https://github.com/HKUST-VISLab/vismooc-data-server/releases/tag/v0.9.3), 
 [vismooc-web-server@v0.13.2](https://github.com/HKUST-VISLab/vismooc-web-server/releases/tag/v0.13.2) and
-[vismooc-front-end@v0.6.3](https://github.com/HKUST-VISLab/vismooc-front-end/releases/tag/v0.6.3)).
+[vismooc-front-end@v0.7.0](https://github.com/HKUST-VISLab/vismooc-front-end/releases/tag/v0.6.3)).
 
 ## Requirement:
 
