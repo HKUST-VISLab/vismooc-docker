@@ -43,4 +43,4 @@ services:
   db:
     image: mongo:3.4
     volumes:
-        - ./database/data:/data
+        - ./database:/data/db
