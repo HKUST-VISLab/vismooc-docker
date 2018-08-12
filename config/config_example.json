@@ -23,6 +23,7 @@
             "callbackURL": "",
             "clientId": "",
             "clientSecret": "",
+            "userProfileURL":"",
             "scope": ["openid", "profile", "email", "course_staff", "course_instructor", "permissions"] // don't modify this
         }
     }
